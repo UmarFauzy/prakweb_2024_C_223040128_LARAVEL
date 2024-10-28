@@ -6,18 +6,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-    return view('about', ['nama' => 'Muhamad Umar Fauzy Rahman']);
+Route::get('/home', function () {
+    return view('home', ['tittle' => 'Home Page']);
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/about', function () {
+    return view('about', ['name' => 'Muhamad Umar Fauzy Rahman', 'tittle' => 'About']);
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    return view('blog', ['tittle' => 'Blog']);
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', ['tittle' => 'Contact']);
 });

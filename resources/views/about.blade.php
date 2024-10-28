@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman About</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <a href="/home">Home</a>
-    <a href="/blog">blog</a>
-    <a href="/about">about</a>
-    <a href="/contact">contact</a>
-    <h1>Ini Halaman About</h1>
-    <h3>Owner : {{ $nama }} </h3>
-    <img src="img/profile.png" alt="">
-
-    <script src="js/script.js"></script>
-</body>
-</html>
+<x-Layout>
+    <x-slot:tittle>{{ $tittle }}</x-slot:tittle>
+    <h3 class="text-xl"> Ini adalah Halaman About </h3>
+    <p>Nama : {{ $name }}</p>
+  </x-Layout>
