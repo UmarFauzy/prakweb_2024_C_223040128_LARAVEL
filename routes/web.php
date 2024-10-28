@@ -33,3 +33,4 @@ Route::get('/posts/{slug}', function($slug) {
     Route::get('/contact', function () {
         return view('contact', ['tittle' => 'Contact']);
 });
+
