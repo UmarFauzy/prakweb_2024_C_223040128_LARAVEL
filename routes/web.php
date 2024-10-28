@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Models\post;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,54 +18,13 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['tittle' => 'Blog', 'posts'=>[
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'tittle' => 'Judul Artikel 1',
-            'author' => 'Umar Fauzy',
-            'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus voluptate, 
-                        cupiditate nemo accusantium ipsam corporis tempora qui voluptates veritatis fuga deserunt 
-                        repellendus adipisci autem in commodi, temporibus quia, dolorem ea.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'tittle' => 'Judul Artikel 2',
-            'author' => 'Umar Fauzy',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Repudiandae quas nostrum aut facere minima minus nemo soluta reiciendis, 
-                        quis ducimus animi nesciunt sint ad aliquid alias similique corrupti accusamus incidunt.'
-        ]
-    ]]);
+    return view('posts', ['tittle' => 'Blog', 'posts'=> Post::all() ]);
 });
 
 
 Route::get('/posts/{slug}', function($slug) {
-    $posts = [
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'tittle' => 'Judul Artikel 1',
-            'author' => 'Umar Fauzy',
-            'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus voluptate, 
-            cupiditate nemo accusantium ipsam corporis tempora qui voluptates veritatis fuga deserunt 
-            repellendus adipisci autem in commodi, temporibus quia, dolorem ea.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'tittle' => 'Judul Artikel 2',
-            'author' => 'Umar Fauzy',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Repudiandae quas nostrum aut facere minima minus nemo soluta reiciendis, 
-            quis ducimus animi nesciunt sint ad aliquid alias similique corrupti accusamus incidunt.'
-            ]
-        ];
-        
-        $post = Arr::first($posts, function($post) use ($slug) {
-            return $post['slug'] == $slug ;
-        });
+
+        $post = Post::find($slug);
         
         return view('post', ['tittle' => 'Single Post', 'post' => $post]);
 
